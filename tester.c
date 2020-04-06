@@ -27,7 +27,6 @@ int main(int argc, char **argv) {
 	if (!Py_IsInitialized()) {
 		Py_Initialize();
 	}
-	init_allocator();
 	char *data;
 	size_t dataSize;
 	data = read_file(argv[1], &dataSize);
