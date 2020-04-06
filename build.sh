@@ -10,10 +10,10 @@ cd $(dirname $0)
 LIBPYTHON_PATH=cpython/libpython3.9.a
 if [ ! -f $LIBPYTHON_PATH ]; then
 	pushd cpython
-	./configure CC="afl-gcc"
+	./configure CC="afl-clang"
 	make; make install
 	popd
 fi
 
-afl-gcc -o fuzzer -g -I./cpython -I./cpython/Include -lutil harness.c $LIBPYTHON_PATH
-afl-gcc -o tester -g -I./cpython -I./cpython/Include -lutil tester.c $LIBPYTHON_PATH
+afl-clang -o fuzzer -lm -lpthread -ldl -lutil -g -I./cpython -I./cpython/Include harness.c $LIBPYTHON_PATH
+afl-clang -o tester -lm -lpthread -ldl -lutil -g -I./cpython -I./cpython/Include -lutil tester.c $LIBPYTHON_PATH

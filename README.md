@@ -12,5 +12,4 @@ cd afl-tutorial
 # Dependencies
 You must have **sudo**, because the fuzzer runs in a docker container. 
 Obviously, you also need docker, whose installation steps are outlined [here](https://docs.docker.com/install/linux/docker-ce/ubuntu/) 
-Also, for AFL to run you need the following configuration, which also requires root. 
-``
+Also, for AFL to run you need the following configuration, which also requires root: `echo core >/proc/sys/kernel/core_pattern`
